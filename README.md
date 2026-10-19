@@ -2,7 +2,10 @@
 
 [![GitHub Pages Deployment](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen?style=for-the-badge&logo=github)](https://huanchen1107.github.io/1019testDIC2/)
 
-🌐 **Live Interactive Website**: [https://huanchen1107.github.io/1019testDIC2/](https://huanchen1107.github.io/1019testDIC2/)
+## 🌐 Live Demo
+👉 **[https://huanchen1107.github.io/1019testDIC2/](https://huanchen1107.github.io/1019testDIC2/)**
+
+![Interactive Machine Learning Studio Snapshot](plots/live_website_snapshot.png)
 
 An interactive machine learning laboratory and automated feature selection framework exploring:
 1. **50 Startups Profit Prediction** (Regression on R&D, Marketing, Administration, and State)

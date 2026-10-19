@@ -46,13 +46,75 @@ body {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 30px 24px;
+  padding: 24px 24px;
+}
+
+/* ---------------- Problem Switcher Bar ---------------- */
+.problem-switcher-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 40px;
+  padding: 8px 24px;
+  max-width: 780px;
+  margin: 0 auto 28px auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.switcher-label {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background: #48bb78;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7);
+  animation: pulse-ring 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(72, 187, 120, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(72, 187, 120, 0); }
+}
+
+.dataset-dropdown {
+  background: #ffffff;
+  color: #1a202c;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 24px;
+  padding: 8px 20px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: var(--transition);
+}
+
+.dataset-dropdown:hover, .dataset-dropdown:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------------- Header ---------------- */
 .header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   color: #ffffff;
 }
 

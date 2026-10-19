@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Feature Selection Studio — Kaggle 50 Startups</title>
-  <meta name="description" content="Interactive Machine Learning visualization studio demonstrating Sequential Forward Selection, Recursive Feature Elimination, and Exhaustive Best Subset regression.">
+  <title>Interactive Feature Selection Studio — 50 Startups & Spotify Tracks</title>
+  <meta name="description" content="Interactive Machine Learning visualization studio demonstrating Sequential Forward Selection, Recursive Feature Elimination, and Exhaustive Best Subset regression on 50 Startups and Spotify Tracks datasets.">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,11 +20,22 @@
 <body>
 
   <div class="container">
+    <!-- Problem / Dataset Switcher Bar -->
+    <div class="problem-switcher-bar">
+      <label for="dataset-select" class="switcher-label">
+        <span class="pulse-dot"></span> Select Problem:
+      </label>
+      <select id="dataset-select" class="dataset-dropdown" onchange="onDatasetChange(this.value)">
+        <option value="startup50" selected>🏢 Kaggle 50 Startups — Profit Prediction</option>
+        <option value="spotify">🎵 Spotify Tracks Dataset — Popularity Prediction (0-100 Score)</option>
+      </select>
+    </div>
+
     <!-- Header -->
     <header class="header">
-      <div class="badge">Interactive Machine Learning Studio</div>
-      <h1 class="title">Feature Selection & Regression Studio</h1>
-      <p class="subtitle">Explore how feature subset size ($k$) impacts model complexity, validation error, and predictive power on the Kaggle 50 Startups dataset.</p>
+      <div class="badge" id="header-badge">50 Startups Profit Studio</div>
+      <h1 class="title" id="header-title">Feature Selection & Regression Studio</h1>
+      <p class="subtitle" id="header-subtitle">Explore how feature subset size ($k$) impacts model complexity, validation error, and predictive power on the Kaggle 50 Startups dataset.</p>
     </header>
 
     <!-- Educational Concepts Section -->
@@ -32,10 +43,10 @@
       <div class="concepts-grid">
         <div class="concept-card">
           <div class="concept-header">
-            <span class="icon">🎯</span>
-            <span>Why Feature Selection?</span>
+            <span class="icon" id="concept-icon-1">🎯</span>
+            <span id="concept-title-1">Why Feature Selection?</span>
           </div>
-          <div class="concept-body">
+          <div class="concept-body" id="concept-body-1">
             More features do not always mean a better model! Adding redundant or noisy predictors leads to <strong>overfitting</strong> and high variance. Feature selection finds the optimal parsimonious subset that minimizes validation error.
           </div>
         </div>
@@ -43,9 +54,9 @@
         <div class="concept-card">
           <div class="concept-header">
             <span class="icon">📐</span>
-            <span>3 Selection Strategies</span>
+            <span id="concept-title-2">3 Selection Strategies</span>
           </div>
-          <div class="concept-body">
+          <div class="concept-body" id="concept-body-2">
             <ul>
               <li><strong>SFS (Forward):</strong> Starts empty; greedily adds the single feature that most reduces RMSE.</li>
               <li><strong>RFE (Backward):</strong> Starts full; recursively eliminates the feature with smallest importance.</li>
@@ -57,12 +68,12 @@
         <div class="concept-card">
           <div class="concept-header">
             <span class="icon">📏</span>
-            <span>Metrics Breakdown</span>
+            <span id="concept-title-3">Metrics Breakdown</span>
           </div>
-          <div class="concept-body">
+          <div class="concept-body" id="concept-body-3">
             <ul>
               <li><strong>RMSE (Root Mean Squared Error):</strong> Penalizes large errors; lower is better.</li>
-              <li><strong>MAE (Mean Absolute Error):</strong> Average absolute deviation in dollars ($).</li>
+              <li><strong>MAE (Mean Absolute Error):</strong> Average absolute deviation in target units.</li>
               <li><strong>$R^2$ (R-squared):</strong> Proportion of variance explained; 1.0 is perfect fit.</li>
             </ul>
           </div>
@@ -102,7 +113,7 @@
         <!-- Plot 3: Actual vs Predicted Regression Plot -->
         <div class="chart-card">
           <div class="chart-header">
-            <h2 class="chart-title"><span>🎯</span> Actual vs. Predicted Profit (Validation Test Set)</h2>
+            <h2 class="chart-title"><span id="scatter-icon">🎯</span> <span id="scatter-title">Actual vs. Predicted Profit (Validation Test Set)</span></h2>
             <span class="chart-legend-badge" id="model-status-badge">Model: SFS (k=2)</span>
           </div>
           <div class="chart-canvas-container large">
@@ -148,7 +159,7 @@
 
           <!-- Live Equation Display -->
           <div class="equation-display" id="equation-display">
-            Profit = 54,028 + 0.806 × R&D + 0.030 × Marketing
+            Profit = 46,346 + 0.7886 × R&D + 0.0326 × Marketing
           </div>
         </div>
 
@@ -205,7 +216,7 @@
     <!-- Interactive Comparison Table Section -->
     <section class="table-section">
       <div class="table-header">
-        <h2 class="table-title"><span>📋</span> Feature Selection Benchmark Table: <span id="current-algo-name">Sequential Forward Selection (SFS)</span></h2>
+        <h2 class="table-title"><span>📋</span> Benchmark Table: <span id="current-algo-name">Sequential Forward Selection (SFS)</span></h2>
         <span style="font-size: 0.9rem; color: var(--text-muted);">Click any row to inspect that model</span>
       </div>
       <div class="table-responsive">
@@ -214,8 +225,8 @@
             <tr>
               <th style="width: 140px;">Number of Features</th>
               <th>Selected Features</th>
-              <th style="width: 170px;">RMSE ($)</th>
-              <th style="width: 150px;">MAE ($)</th>
+              <th style="width: 170px;" id="th-rmse">RMSE ($)</th>
+              <th style="width: 150px;" id="th-mae">MAE ($)</th>
               <th style="width: 150px;">R-squared ($R^2$)</th>
             </tr>
           </thead>
@@ -226,61 +237,25 @@
       </div>
     </section>
 
-    <!-- Interactive Live Prediction Calculator -->
+    <!-- Interactive Live Prediction Playground -->
     <section class="calculator-section">
       <div class="card-title" style="margin-bottom: 20px;">
-        <span>🔮</span>
-        <span>Live Startup Profit Prediction Playground</span>
+        <span id="calc-icon">🔮</span>
+        <span id="calc-title">Live Prediction Playground</span>
       </div>
-      <p style="color: var(--text-muted); margin-bottom: 22px; font-size: 0.95rem;">
-        Adjust the operational spending sliders below. The active feature selection model will instantly compute the predicted annual profit!
+      <p style="color: var(--text-muted); margin-bottom: 22px; font-size: 0.95rem;" id="calc-desc">
+        Adjust the feature sliders below. The active feature selection model will instantly compute the predicted output!
       </p>
 
       <div class="calc-grid">
-        <div class="calc-inputs-grid">
-          <!-- R&D Spend Slider -->
-          <div class="parameter-control">
-            <div class="control-label">
-              <span>R&D Spend ($)</span>
-              <span class="control-value" id="calc-rd-val">$100,000</span>
-            </div>
-            <input type="range" id="calc-rd-slider" min="0" max="200000" step="5000" value="100000" class="slider" oninput="updateProfitPrediction()">
-          </div>
-
-          <!-- Administration Spend Slider -->
-          <div class="parameter-control">
-            <div class="control-label">
-              <span>Administration ($)</span>
-              <span class="control-value" id="calc-admin-val">$120,000</span>
-            </div>
-            <input type="range" id="calc-admin-slider" min="0" max="200000" step="5000" value="120000" class="slider" oninput="updateProfitPrediction()">
-          </div>
-
-          <!-- Marketing Spend Slider -->
-          <div class="parameter-control">
-            <div class="control-label">
-              <span>Marketing Spend ($)</span>
-              <span class="control-value" id="calc-mkt-val">$200,000</span>
-            </div>
-            <input type="range" id="calc-mkt-slider" min="0" max="500000" step="10000" value="200000" class="slider" oninput="updateProfitPrediction()">
-          </div>
-
-          <!-- State Dropdown -->
-          <div class="parameter-control">
-            <div class="control-label">
-              <span>Location / State</span>
-            </div>
-            <select id="calc-state-select" class="slider" style="height: 38px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 10px; font-weight: 600;" onchange="updateProfitPrediction()">
-              <option value="California">California</option>
-              <option value="Florida">Florida</option>
-              <option value="New York">New York</option>
-            </select>
-          </div>
+        <!-- Dynamic Sliders Container -->
+        <div class="calc-inputs-grid" id="calc-inputs-container">
+          <!-- Populated dynamically via JS for Startups or Spotify -->
         </div>
 
         <!-- Live Prediction Result Card -->
-        <div class="calc-result-card">
-          <div class="calc-result-label">Predicted Annual Profit</div>
+        <div class="calc-result-card" id="calc-result-card">
+          <div class="calc-result-label" id="calc-result-label">Predicted Annual Profit</div>
           <div class="calc-result-number" id="calc-predicted-profit">$132,546.61</div>
           <div class="calc-result-subtext" id="calc-formula-desc">Based on active model: ['R&D Spend', 'Marketing Spend']</div>
         </div>
@@ -289,7 +264,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>Interactive Machine Learning Studio • Kaggle 50 Startups Dataset • Built with Vanilla HTML5, CSS3 & JavaScript</p>
+      <p>Interactive Machine Learning Studio • 50 Startups & Spotify Tracks Datasets • Built with Vanilla HTML5, CSS3 & JavaScript</p>
     </footer>
   </div>
 

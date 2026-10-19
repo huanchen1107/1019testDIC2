@@ -1,0 +1,924 @@
+{
+  "sfs": [
+    {
+      "k": 1,
+      "features": [
+        "danceability"
+      ],
+      "rmse": 22.413983753541867,
+      "mae": 19.120827611248895,
+      "r2": 0.00512825693781882,
+      "modelKey": "danceability"
+    },
+    {
+      "k": 2,
+      "features": [
+        "danceability",
+        "speechiness"
+      ],
+      "rmse": 22.362006640701658,
+      "mae": 19.013579312809295,
+      "r2": 0.009737040818395548,
+      "modelKey": "danceability__speechiness"
+    },
+    {
+      "k": 3,
+      "features": [
+        "danceability",
+        "speechiness",
+        "instrumentalness"
+      ],
+      "rmse": 22.323048058877244,
+      "mae": 18.810660124949113,
+      "r2": 0.013184462617563453,
+      "modelKey": "danceability__instrumentalness__speechiness"
+    },
+    {
+      "k": 4,
+      "features": [
+        "danceability",
+        "speechiness",
+        "instrumentalness",
+        "valence"
+      ],
+      "rmse": 22.278816615886697,
+      "mae": 18.695009702208377,
+      "r2": 0.017091190066210404,
+      "modelKey": "danceability__instrumentalness__speechiness__valence"
+    },
+    {
+      "k": 5,
+      "features": [
+        "danceability",
+        "speechiness",
+        "instrumentalness",
+        "valence",
+        "loudness"
+      ],
+      "rmse": 22.26549442971872,
+      "mae": 18.68928659387397,
+      "r2": 0.01826634934729221,
+      "modelKey": "danceability__instrumentalness__loudness__speechiness__valence"
+    },
+    {
+      "k": 6,
+      "features": [
+        "danceability",
+        "speechiness",
+        "instrumentalness",
+        "valence",
+        "loudness",
+        "energy"
+      ],
+      "rmse": 22.258465721932968,
+      "mae": 18.684741633143954,
+      "r2": 0.018886073273850612,
+      "modelKey": "danceability__energy__instrumentalness__loudness__speechiness__valence"
+    }
+  ],
+  "rfe": [
+    {
+      "k": 1,
+      "features": [
+        "speechiness"
+      ],
+      "rmse": 22.43718023060188,
+      "mae": 19.136517595255654,
+      "r2": 0.0030679840824223703,
+      "modelKey": "speechiness"
+    },
+    {
+      "k": 2,
+      "features": [
+        "danceability",
+        "speechiness"
+      ],
+      "rmse": 22.362006640701658,
+      "mae": 19.013579312809295,
+      "r2": 0.009737040818395548,
+      "modelKey": "danceability__speechiness"
+    },
+    {
+      "k": 3,
+      "features": [
+        "danceability",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.345026052309326,
+      "mae": 18.972231056856923,
+      "r2": 0.011240382057081555,
+      "modelKey": "danceability__speechiness__valence"
+    },
+    {
+      "k": 4,
+      "features": [
+        "danceability",
+        "instrumentalness",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.278816615886697,
+      "mae": 18.695009702208385,
+      "r2": 0.017091190066210404,
+      "modelKey": "danceability__instrumentalness__speechiness__valence"
+    },
+    {
+      "k": 5,
+      "features": [
+        "danceability",
+        "energy",
+        "instrumentalness",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.27957613419543,
+      "mae": 18.69896679749444,
+      "r2": 0.017024171249626296,
+      "modelKey": "danceability__energy__instrumentalness__speechiness__valence"
+    },
+    {
+      "k": 6,
+      "features": [
+        "danceability",
+        "energy",
+        "loudness",
+        "instrumentalness",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.258465721932968,
+      "mae": 18.684741633143954,
+      "r2": 0.01888607327385039,
+      "modelKey": "danceability__energy__instrumentalness__loudness__speechiness__valence"
+    }
+  ],
+  "exhaustive": [
+    {
+      "k": 1,
+      "features": [
+        "danceability"
+      ],
+      "rmse": 22.413983753541867,
+      "mae": 19.120827611248895,
+      "r2": 0.00512825693781882,
+      "modelKey": "danceability"
+    },
+    {
+      "k": 2,
+      "features": [
+        "danceability",
+        "speechiness"
+      ],
+      "rmse": 22.362006640701658,
+      "mae": 19.013579312809295,
+      "r2": 0.009737040818395548,
+      "modelKey": "danceability__speechiness"
+    },
+    {
+      "k": 3,
+      "features": [
+        "danceability",
+        "instrumentalness",
+        "speechiness"
+      ],
+      "rmse": 22.323048058877244,
+      "mae": 18.810660124949113,
+      "r2": 0.013184462617563453,
+      "modelKey": "danceability__instrumentalness__speechiness"
+    },
+    {
+      "k": 4,
+      "features": [
+        "danceability",
+        "instrumentalness",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.278816615886697,
+      "mae": 18.695009702208385,
+      "r2": 0.017091190066210404,
+      "modelKey": "danceability__instrumentalness__speechiness__valence"
+    },
+    {
+      "k": 5,
+      "features": [
+        "danceability",
+        "loudness",
+        "instrumentalness",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.26549442971872,
+      "mae": 18.689286593873966,
+      "r2": 0.0182663493472921,
+      "modelKey": "danceability__instrumentalness__loudness__speechiness__valence"
+    },
+    {
+      "k": 6,
+      "features": [
+        "danceability",
+        "energy",
+        "loudness",
+        "instrumentalness",
+        "speechiness",
+        "valence"
+      ],
+      "rmse": 22.258465721932968,
+      "mae": 18.684741633143954,
+      "r2": 0.01888607327385039,
+      "modelKey": "danceability__energy__instrumentalness__loudness__speechiness__valence"
+    }
+  ],
+  "models": {
+    "danceability": {
+      "intercept": 28.708640428648543,
+      "coef": {
+        "danceability": 7.581633987277098
+      }
+    },
+    "energy": {
+      "intercept": 32.182254206661824,
+      "coef": {
+        "energy": 1.2207994361540837
+      }
+    },
+    "loudness": {
+      "intercept": 35.952679473374936,
+      "coef": {
+        "loudness": 0.3682848014670881
+      }
+    },
+    "instrumentalness": {
+      "intercept": 34.12172410454925,
+      "coef": {
+        "instrumentalness": -7.714562683597093
+      }
+    },
+    "speechiness": {
+      "intercept": 33.90953423942861,
+      "coef": {
+        "speechiness": -10.980259541720978
+      }
+    },
+    "valence": {
+      "intercept": 34.415303809687096,
+      "coef": {
+        "valence": -3.070537925407511
+      }
+    },
+    "danceability__energy": {
+      "intercept": 28.344377027818894,
+      "coef": {
+        "danceability": 7.479154583790565,
+        "energy": 0.652566377544453
+      }
+    },
+    "danceability__loudness": {
+      "intercept": 32.52522945807897,
+      "coef": {
+        "danceability": 5.413925591634688,
+        "loudness": 0.3209197491592741
+      }
+    },
+    "danceability__instrumentalness": {
+      "intercept": 30.987228772218206,
+      "coef": {
+        "danceability": 5.42818697745579,
+        "instrumentalness": -7.161665553169419
+      }
+    },
+    "danceability__speechiness": {
+      "intercept": 29.31057008860399,
+      "coef": {
+        "danceability": 8.403096700010705,
+        "speechiness": -12.452498629041
+      }
+    },
+    "danceability__valence": {
+      "intercept": 29.192523060428318,
+      "coef": {
+        "danceability": 12.729981143540886,
+        "valence": -7.18526761028633
+      }
+    },
+    "energy__loudness": {
+      "intercept": 45.13724050730755,
+      "coef": {
+        "energy": -9.549321654209475,
+        "loudness": 0.7402452201233418
+      }
+    },
+    "energy__instrumentalness": {
+      "intercept": 34.24864972602236,
+      "coef": {
+        "energy": -0.19071078567523173,
+        "instrumentalness": -7.7389175837190765
+      }
+    },
+    "energy__speechiness": {
+      "intercept": 32.733767097671084,
+      "coef": {
+        "energy": 1.8993245916982398,
+        "speechiness": -11.590643531459255
+      }
+    },
+    "energy__valence": {
+      "intercept": 33.28739289918538,
+      "coef": {
+        "energy": 2.093773719764022,
+        "valence": -3.550559718078837
+      }
+    },
+    "instrumentalness__loudness": {
+      "intercept": 35.59981543650672,
+      "coef": {
+        "loudness": 0.20793656228932758,
+        "instrumentalness": -6.338911092930071
+      }
+    },
+    "loudness__speechiness": {
+      "intercept": 37.10686174093405,
+      "coef": {
+        "loudness": 0.3840684303036967,
+        "speechiness": -12.014838935001745
+      }
+    },
+    "loudness__valence": {
+      "intercept": 39.018842129928295,
+      "coef": {
+        "loudness": 0.4423488159238721,
+        "valence": -5.245786370860812
+      }
+    },
+    "instrumentalness__speechiness": {
+      "intercept": 35.30294080295629,
+      "coef": {
+        "instrumentalness": -8.144044326469047,
+        "speechiness": -13.077292031308035
+      }
+    },
+    "instrumentalness__valence": {
+      "intercept": 37.59293924551569,
+      "coef": {
+        "instrumentalness": -9.658377689993914,
+        "valence": -6.765877067286728
+      }
+    },
+    "speechiness__valence": {
+      "intercept": 35.23648199910775,
+      "coef": {
+        "speechiness": -10.674102400647303,
+        "valence": -2.877643435792926
+      }
+    },
+    "danceability__energy__loudness": {
+      "intercept": 41.853365356494784,
+      "coef": {
+        "danceability": 4.396161525439914,
+        "energy": -9.028682948229719,
+        "loudness": 0.6815046662565667
+      }
+    },
+    "danceability__energy__instrumentalness": {
+      "intercept": 31.292633020134755,
+      "coef": {
+        "danceability": 5.4910214608343235,
+        "energy": -0.5133996213748357,
+        "instrumentalness": -7.220829622156806
+      }
+    },
+    "danceability__energy__speechiness": {
+      "intercept": 28.576992138518122,
+      "coef": {
+        "danceability": 8.217717614319124,
+        "energy": 1.3489083724527995,
+        "speechiness": -12.853517143927258
+      }
+    },
+    "danceability__energy__valence": {
+      "intercept": 28.030893677066505,
+      "coef": {
+        "danceability": 12.750122498813873,
+        "energy": 2.141026569956285,
+        "valence": -7.682632982835363
+      }
+    },
+    "danceability__instrumentalness__loudness": {
+      "intercept": 32.71842979009451,
+      "coef": {
+        "danceability": 4.572609806305791,
+        "loudness": 0.17404111697116625,
+        "instrumentalness": -6.09740323956541
+      }
+    },
+    "danceability__loudness__speechiness": {
+      "intercept": 33.27224829037339,
+      "coef": {
+        "danceability": 6.200239974237615,
+        "loudness": 0.33106358667465474,
+        "speechiness": -12.958352070954195
+      }
+    },
+    "danceability__loudness__valence": {
+      "intercept": 33.95469748067103,
+      "coef": {
+        "danceability": 11.079382213003038,
+        "loudness": 0.3925207975474545,
+        "valence": -8.581961573876296
+      }
+    },
+    "danceability__instrumentalness__speechiness": {
+      "intercept": 31.78483191219653,
+      "coef": {
+        "danceability": 6.239143300716387,
+        "instrumentalness": -7.539331800578216,
+        "speechiness": -14.01469312215425
+      }
+    },
+    "danceability__instrumentalness__valence": {
+      "intercept": 32.46407197168611,
+      "coef": {
+        "danceability": 12.400601301750344,
+        "instrumentalness": -9.533082421487151,
+        "valence": -10.726202304850245
+      }
+    },
+    "danceability__speechiness__valence": {
+      "intercept": 29.80481773865076,
+      "coef": {
+        "danceability": 13.598872951882413,
+        "speechiness": -12.592687281324228,
+        "valence": -7.238554992296956
+      }
+    },
+    "energy__instrumentalness__loudness": {
+      "intercept": 42.706840769245,
+      "coef": {
+        "energy": -7.323110985888026,
+        "loudness": 0.522101610560897,
+        "instrumentalness": -5.195685579089095
+      }
+    },
+    "energy__loudness__speechiness": {
+      "intercept": 45.22385472362478,
+      "coef": {
+        "energy": -8.626505842009976,
+        "loudness": 0.7176222372273039,
+        "speechiness": -10.141053905129718
+      }
+    },
+    "energy__loudness__valence": {
+      "intercept": 47.55002714729116,
+      "coef": {
+        "energy": -9.093997705532429,
+        "loudness": 0.791369565266442,
+        "valence": -4.8771904990628165
+      }
+    },
+    "energy__instrumentalness__speechiness": {
+      "intercept": 34.96985081433786,
+      "coef": {
+        "energy": 0.5210556671858193,
+        "instrumentalness": -8.082481207051313,
+        "speechiness": -13.228891097111864
+      }
+    },
+    "energy__instrumentalness__valence": {
+      "intercept": 36.920435192106694,
+      "coef": {
+        "energy": 1.197573217302307,
+        "instrumentalness": -9.575174147839927,
+        "valence": -7.008600497486166
+      }
+    },
+    "energy__speechiness__valence": {
+      "intercept": 33.816638424587325,
+      "coef": {
+        "energy": 2.7526666256788745,
+        "speechiness": -11.493157095753304,
+        "valence": -3.493922681320244
+      }
+    },
+    "instrumentalness__loudness__speechiness": {
+      "intercept": 36.85528626584925,
+      "coef": {
+        "loudness": 0.2156459794246838,
+        "instrumentalness": -6.724462189482012,
+        "speechiness": -13.292653485011403
+      }
+    },
+    "instrumentalness__loudness__valence": {
+      "intercept": 39.879803620591815,
+      "coef": {
+        "loudness": 0.26955506558722475,
+        "instrumentalness": -8.082696591276655,
+        "valence": -7.488550230687514
+      }
+    },
+    "loudness__speechiness__valence": {
+      "intercept": 40.0543391028685,
+      "coef": {
+        "loudness": 0.4556178180158231,
+        "speechiness": -11.664951791522672,
+        "valence": -5.100236245454802
+      }
+    },
+    "instrumentalness__speechiness__valence": {
+      "intercept": 38.71360367721668,
+      "coef": {
+        "instrumentalness": -10.057828664412169,
+        "speechiness": -12.858707571390728,
+        "valence": -6.686335763465664
+      }
+    },
+    "danceability__energy__instrumentalness__loudness": {
+      "intercept": 39.833648839559494,
+      "coef": {
+        "danceability": 3.9370754519869413,
+        "energy": -6.918901757301849,
+        "loudness": 0.4755764252800905,
+        "instrumentalness": -5.050846144147752
+      }
+    },
+    "danceability__energy__loudness__speechiness": {
+      "intercept": 41.35277007605236,
+      "coef": {
+        "danceability": 5.193041625122704,
+        "energy": -7.925730278837464,
+        "loudness": 0.64613147242091,
+        "speechiness": -11.083515216489657
+      }
+    },
+    "danceability__energy__loudness__valence": {
+      "intercept": 41.750572092971574,
+      "coef": {
+        "danceability": 9.745787849975546,
+        "energy": -7.660407778031361,
+        "loudness": 0.6925191101746684,
+        "valence": -7.869905534369138
+      }
+    },
+    "danceability__energy__instrumentalness__speechiness": {
+      "intercept": 31.668460624610002,
+      "coef": {
+        "danceability": 6.217750471859824,
+        "energy": 0.20091079063914252,
+        "instrumentalness": -7.517667482956586,
+        "speechiness": -14.069933145438656
+      }
+    },
+    "danceability__energy__instrumentalness__valence": {
+      "intercept": 31.752789108447818,
+      "coef": {
+        "danceability": 12.415433648482741,
+        "energy": 1.2557048994747868,
+        "instrumentalness": -9.445690211151595,
+        "valence": -10.985444770982696
+      }
+    },
+    "danceability__energy__speechiness__valence": {
+      "intercept": 28.26503996266591,
+      "coef": {
+        "danceability": 13.687057978633247,
+        "energy": 2.9168974142162405,
+        "speechiness": -13.473050278393488,
+        "valence": -7.919882293467923
+      }
+    },
+    "danceability__instrumentalness__loudness__speechiness": {
+      "intercept": 33.5405889078993,
+      "coef": {
+        "danceability": 5.375406582713175,
+        "loudness": 0.17624521562660367,
+        "instrumentalness": -6.462837493548797,
+        "speechiness": -14.060933535454568
+      }
+    },
+    "danceability__instrumentalness__loudness__valence": {
+      "intercept": 34.624486392877046,
+      "coef": {
+        "danceability": 11.5474071063094,
+        "loudness": 0.21305599073233872,
+        "instrumentalness": -8.296286674383841,
+        "valence": -11.024921420344349
+      }
+    },
+    "danceability__loudness__speechiness__valence": {
+      "intercept": 34.73374632636167,
+      "coef": {
+        "danceability": 11.945823819062781,
+        "loudness": 0.40368173826317744,
+        "speechiness": -13.237370340144274,
+        "valence": -8.677690616911711
+      }
+    },
+    "danceability__instrumentalness__speechiness__valence": {
+      "intercept": 33.334010758380586,
+      "coef": {
+        "danceability": 13.401690340894076,
+        "instrumentalness": -9.980633489695524,
+        "speechiness": -14.732705983308607,
+        "valence": -10.954782217156417
+      }
+    },
+    "energy__instrumentalness__loudness__speechiness": {
+      "intercept": 42.55202349302777,
+      "coef": {
+        "energy": -6.015268582971151,
+        "loudness": 0.47283789000101584,
+        "instrumentalness": -5.742094656570024,
+        "speechiness": -11.799387678319981
+      }
+    },
+    "energy__instrumentalness__loudness__valence": {
+      "intercept": 45.2871560687861,
+      "coef": {
+        "energy": -5.882293191302089,
+        "loudness": 0.5175695377631243,
+        "instrumentalness": -7.041613633607729,
+        "valence": -6.961253681056054
+      }
+    },
+    "energy__loudness__speechiness__valence": {
+      "intercept": 47.59139327471303,
+      "coef": {
+        "energy": -8.200827389332991,
+        "loudness": 0.768357319056012,
+        "speechiness": -9.904925836652366,
+        "valence": -4.789802980112903
+      }
+    },
+    "energy__instrumentalness__speechiness__valence": {
+      "intercept": 37.6765386125663,
+      "coef": {
+        "energy": 1.932041772953546,
+        "instrumentalness": -9.940664430088,
+        "speechiness": -13.40813712361373,
+        "valence": -7.074522187899079
+      }
+    },
+    "instrumentalness__loudness__speechiness__valence": {
+      "intercept": 41.08261474049534,
+      "coef": {
+        "loudness": 0.27664815799808756,
+        "instrumentalness": -8.448515974907078,
+        "speechiness": -13.110794956414889,
+        "valence": -7.426466042828309
+      }
+    },
+    "danceability__energy__instrumentalness__loudness__speechiness": {
+      "intercept": 39.04196296572323,
+      "coef": {
+        "danceability": 4.794834255346955,
+        "energy": -5.43095916985848,
+        "loudness": 0.41270958384514156,
+        "instrumentalness": -5.604151743031736,
+        "speechiness": -12.629741842265144
+      }
+    },
+    "danceability__energy__instrumentalness__loudness__valence": {
+      "intercept": 38.69211376353979,
+      "coef": {
+        "danceability": 10.80021330916903,
+        "energy": -4.054975231166039,
+        "loudness": 0.3876813241529957,
+        "instrumentalness": -7.564792537008669,
+        "valence": -10.43260141045296
+      }
+    },
+    "danceability__energy__loudness__speechiness__valence": {
+      "intercept": 41.220079861020466,
+      "coef": {
+        "danceability": 10.719296155232929,
+        "energy": -6.463173954318201,
+        "loudness": 0.6554881189692727,
+        "speechiness": -11.688825233246181,
+        "valence": -8.065722109895944
+      }
+    },
+    "danceability__energy__instrumentalness__speechiness__valence": {
+      "intercept": 32.17980358460315,
+      "coef": {
+        "danceability": 13.467730018265,
+        "energy": 2.1008901797957993,
+        "instrumentalness": -9.852849436049611,
+        "speechiness": -15.33938677876802,
+        "valence": -11.397927392237435
+      }
+    },
+    "danceability__instrumentalness__loudness__speechiness__valence": {
+      "intercept": 35.53089544221186,
+      "coef": {
+        "danceability": 12.541090996983302,
+        "loudness": 0.21620614610479472,
+        "instrumentalness": -8.727880129381333,
+        "speechiness": -14.809377209025008,
+        "valence": -11.259107630961747
+      }
+    },
+    "energy__instrumentalness__loudness__speechiness__valence": {
+      "intercept": 45.153346549373865,
+      "coef": {
+        "energy": -4.539764707218734,
+        "loudness": 0.4674533644351132,
+        "instrumentalness": -7.613870959688371,
+        "speechiness": -11.99365276762032,
+        "valence": -7.024805581956109
+      }
+    },
+    "danceability__energy__instrumentalness__loudness__speechiness__valence": {
+      "intercept": 37.74892222519888,
+      "coef": {
+        "danceability": 12.085471140641024,
+        "energy": -2.2486552658385324,
+        "loudness": 0.3129124480169079,
+        "instrumentalness": -8.30431092048241,
+        "speechiness": -14.19431989495691,
+        "valence": -10.920915003107712
+      }
+    }
+  },
+  "test_sample": [
+    {
+      "danceability": 0.682,
+      "energy": 0.822,
+      "loudness": -8.477,
+      "instrumentalness": 1.68e-05,
+      "speechiness": 0.0524,
+      "valence": 0.567,
+      "popularity": 29.0
+    },
+    {
+      "danceability": 0.465,
+      "energy": 0.0819,
+      "loudness": -15.578,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0448,
+      "valence": 0.19,
+      "popularity": 0.0
+    },
+    {
+      "danceability": 0.574,
+      "energy": 0.935,
+      "loudness": -2.174,
+      "instrumentalness": 0.00974,
+      "speechiness": 0.412,
+      "valence": 0.322,
+      "popularity": 22.0
+    },
+    {
+      "danceability": 0.754,
+      "energy": 0.763,
+      "loudness": -4.627,
+      "instrumentalness": 2.23e-05,
+      "speechiness": 0.0435,
+      "valence": 0.464,
+      "popularity": 0.0
+    },
+    {
+      "danceability": 0.363,
+      "energy": 0.819,
+      "loudness": -3.128,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0634,
+      "valence": 0.468,
+      "popularity": 47.0
+    },
+    {
+      "danceability": 0.847,
+      "energy": 0.875,
+      "loudness": -6.454,
+      "instrumentalness": 0.0966,
+      "speechiness": 0.0659,
+      "valence": 0.928,
+      "popularity": 18.0
+    },
+    {
+      "danceability": 0.483,
+      "energy": 0.789,
+      "loudness": -9.402,
+      "instrumentalness": 0.0277,
+      "speechiness": 0.0341,
+      "valence": 0.0736,
+      "popularity": 11.0
+    },
+    {
+      "danceability": 0.42,
+      "energy": 0.865,
+      "loudness": -5.502,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0365,
+      "valence": 0.341,
+      "popularity": 36.0
+    },
+    {
+      "danceability": 0.508,
+      "energy": 0.891,
+      "loudness": -7.492,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0539,
+      "valence": 0.572,
+      "popularity": 63.0
+    },
+    {
+      "danceability": 0.51,
+      "energy": 0.578,
+      "loudness": -5.952,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0276,
+      "valence": 0.51,
+      "popularity": 19.0
+    },
+    {
+      "danceability": 0.482,
+      "energy": 0.769,
+      "loudness": -9.992,
+      "instrumentalness": 0.00102,
+      "speechiness": 0.0304,
+      "valence": 0.759,
+      "popularity": 26.0
+    },
+    {
+      "danceability": 0.254,
+      "energy": 0.989,
+      "loudness": -4.192,
+      "instrumentalness": 0.0,
+      "speechiness": 0.473,
+      "valence": 0.156,
+      "popularity": 26.0
+    },
+    {
+      "danceability": 0.767,
+      "energy": 0.659,
+      "loudness": -7.429,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0444,
+      "valence": 0.439,
+      "popularity": 75.0
+    },
+    {
+      "danceability": 0.891,
+      "energy": 0.819,
+      "loudness": -3.964,
+      "instrumentalness": 0.000354,
+      "speechiness": 0.106,
+      "valence": 0.768,
+      "popularity": 76.0
+    },
+    {
+      "danceability": 0.369,
+      "energy": 0.637,
+      "loudness": -6.279,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0299,
+      "valence": 0.121,
+      "popularity": 36.0
+    },
+    {
+      "danceability": 0.649,
+      "energy": 0.517,
+      "loudness": -5.227,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0273,
+      "valence": 0.185,
+      "popularity": 0.0
+    },
+    {
+      "danceability": 0.537,
+      "energy": 0.307,
+      "loudness": -10.967,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0545,
+      "valence": 0.114,
+      "popularity": 66.0
+    },
+    {
+      "danceability": 0.686,
+      "energy": 0.228,
+      "loudness": -18.453,
+      "instrumentalness": 0.937,
+      "speechiness": 0.0494,
+      "valence": 0.0968,
+      "popularity": 50.0
+    },
+    {
+      "danceability": 0.499,
+      "energy": 0.295,
+      "loudness": -11.782,
+      "instrumentalness": 0.0,
+      "speechiness": 0.0287,
+      "valence": 0.323,
+      "popularity": 0.0
+    },
+    {
+      "danceability": 0.424,
+      "energy": 0.079,
+      "loudness": -16.861,
+      "instrumentalness": 0.00147,
+      "speechiness": 0.0376,
+      "valence": 0.155,
+      "popularity": 0.0
+    }
+  ]
+}

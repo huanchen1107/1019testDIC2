@@ -1,6 +1,12 @@
-# 1019testDIC2: Kaggle 50 Startups Profit Prediction
+# 1019testDIC2: Interactive Feature Selection & Machine Learning Studio
 
-A machine learning project implementing the **CRISP-DM** methodology to predict startup profits based on operational spending (`R&D Spend`, `Administration`, `Marketing Spend`) and `State`.
+[![GitHub Pages Deployment](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen?style=for-the-badge&logo=github)](https://huanchen1107.github.io/1019testDIC2/)
+
+🌐 **Live Interactive Website**: [https://huanchen1107.github.io/1019testDIC2/](https://huanchen1107.github.io/1019testDIC2/)
+
+An interactive machine learning laboratory and automated feature selection framework exploring:
+1. **50 Startups Profit Prediction** (Regression on R&D, Marketing, Administration, and State)
+2. **Spotify Tracks Popularity Prediction** (0–100 score prediction across acoustic dimensions: danceability, energy, loudness, speechiness, valence, tempo)
 
 ---
 

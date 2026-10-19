@@ -1,0 +1,150 @@
+{
+  "models": {
+    "R&D Spend": {
+      "intercept": 48416.297661385026,
+      "coef": {
+        "R&D Spend": 0.8516227998779371
+      }
+    },
+    "Marketing Spend__R&D Spend": {
+      "intercept": 46346.338761236555,
+      "coef": {
+        "R&D Spend": 0.7886182999424615,
+        "Marketing Spend": 0.032576627317020684
+      }
+    },
+    "Marketing Spend__R&D Spend__State_New York": {
+      "intercept": 46100.29130551415,
+      "coef": {
+        "R&D Spend": 0.7858709815066744,
+        "Marketing Spend": 0.033271829410322355,
+        "State_New York": 864.0018700527347
+      }
+    },
+    "Marketing Spend__R&D Spend__State_Florida__State_New York": {
+      "intercept": 46329.060178542495,
+      "coef": {
+        "R&D Spend": 0.7851417173112172,
+        "Marketing Spend": 0.033956402340301096,
+        "State_New York": 554.657332826717,
+        "State_Florida": -826.4681587619036
+      }
+    },
+    "Administration__Marketing Spend__R&D Spend__State_Florida__State_New York": {
+      "intercept": 42554.16761773237,
+      "coef": {
+        "R&D Spend": 0.7734671927328001,
+        "Administration": 0.03288459753625596,
+        "Marketing Spend": 0.036610025863856116,
+        "State_Florida": -959.2841600571066,
+        "State_New York": 699.3690525192583
+      }
+    },
+    "R&D Spend__State_Florida": {
+      "intercept": 48319.70480319308,
+      "coef": {
+        "R&D Spend": 0.8515781310728888,
+        "State_Florida": 399.1758990382208
+      }
+    },
+    "Administration__R&D Spend__State_Florida": {
+      "intercept": 48524.91882908291,
+      "coef": {
+        "R&D Spend": 0.851939574961828,
+        "Administration": -0.0018828428042859105,
+        "State_Florida": 404.0171892528541
+      }
+    },
+    "Administration__R&D Spend__State_Florida__State_New York": {
+      "intercept": 48444.527070978846,
+      "coef": {
+        "R&D Spend": 0.8516135792403573,
+        "Administration": -0.001696797748794788,
+        "State_Florida": 484.73296619775977,
+        "State_New York": 173.19542846407654
+      }
+    }
+  },
+  "test_points": [
+    {
+      "rd": 66051.52,
+      "admin": 182645.56,
+      "marketing": 118148.2,
+      "state_ny": 0.0,
+      "state_fl": 1.0,
+      "profit": 103282.38
+    },
+    {
+      "rd": 100671.96,
+      "admin": 91790.61,
+      "marketing": 249744.55,
+      "state_ny": 0.0,
+      "state_fl": 0.0,
+      "profit": 144259.4
+    },
+    {
+      "rd": 101913.08,
+      "admin": 110594.11,
+      "marketing": 229160.95,
+      "state_ny": 0.0,
+      "state_fl": 1.0,
+      "profit": 146121.95
+    },
+    {
+      "rd": 27892.92,
+      "admin": 84710.77,
+      "marketing": 164470.71,
+      "state_ny": 0.0,
+      "state_fl": 1.0,
+      "profit": 77798.83
+    },
+    {
+      "rd": 153441.51,
+      "admin": 101145.55,
+      "marketing": 407934.54,
+      "state_ny": 0.0,
+      "state_fl": 1.0,
+      "profit": 191050.39
+    },
+    {
+      "rd": 72107.6,
+      "admin": 127864.55,
+      "marketing": 353183.81,
+      "state_ny": 1.0,
+      "state_fl": 0.0,
+      "profit": 105008.31
+    },
+    {
+      "rd": 20229.59,
+      "admin": 65947.93,
+      "marketing": 185265.1,
+      "state_ny": 1.0,
+      "state_fl": 0.0,
+      "profit": 81229.06
+    },
+    {
+      "rd": 61136.38,
+      "admin": 152701.92,
+      "marketing": 88218.23,
+      "state_ny": 1.0,
+      "state_fl": 0.0,
+      "profit": 97483.56
+    },
+    {
+      "rd": 73994.56,
+      "admin": 122782.75,
+      "marketing": 303319.26,
+      "state_ny": 0.0,
+      "state_fl": 1.0,
+      "profit": 110352.25
+    },
+    {
+      "rd": 142107.34,
+      "admin": 91391.77,
+      "marketing": 366168.42,
+      "state_ny": 0.0,
+      "state_fl": 1.0,
+      "profit": 166187.94
+    }
+  ]
+}

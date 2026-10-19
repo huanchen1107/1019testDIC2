@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Feature Selection Studio — Kaggle 50 Startups</title>
+  <meta name="description" content="Interactive Machine Learning visualization studio demonstrating Sequential Forward Selection, Recursive Feature Elimination, and Exhaustive Best Subset regression.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="badge">Interactive Machine Learning Studio</div>
+      <h1 class="title">Feature Selection & Regression Studio</h1>
+      <p class="subtitle">Explore how feature subset size ($k$) impacts model complexity, validation error, and predictive power on the Kaggle 50 Startups dataset.</p>
+    </header>
+
+    <!-- Educational Concepts Section -->
+    <section class="educational-content" id="educational-section">
+      <div class="concepts-grid">
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="icon">🎯</span>
+            <span>Why Feature Selection?</span>
+          </div>
+          <div class="concept-body">
+            More features do not always mean a better model! Adding redundant or noisy predictors leads to <strong>overfitting</strong> and high variance. Feature selection finds the optimal parsimonious subset that minimizes validation error.
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="icon">📐</span>
+            <span>3 Selection Strategies</span>
+          </div>
+          <div class="concept-body">
+            <ul>
+              <li><strong>SFS (Forward):</strong> Starts empty; greedily adds the single feature that most reduces RMSE.</li>
+              <li><strong>RFE (Backward):</strong> Starts full; recursively eliminates the feature with smallest importance.</li>
+              <li><strong>Exhaustive:</strong> Evaluates all $2^N - 1$ combinations to guarantee the global optimum.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-header">
+            <span class="icon">📏</span>
+            <span>Metrics Breakdown</span>
+          </div>
+          <div class="concept-body">
+            <ul>
+              <li><strong>RMSE (Root Mean Squared Error):</strong> Penalizes large errors; lower is better.</li>
+              <li><strong>MAE (Mean Absolute Error):</strong> Average absolute deviation in dollars ($).</li>
+              <li><strong>$R^2$ (R-squared):</strong> Proportion of variance explained; 1.0 is perfect fit.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Interactive Dashboard Grid -->
+    <main class="main-content">
+      <!-- Left: Interactive Charts -->
+      <section class="charts-wrapper" aria-label="Interactive Diagnostic Visualizations">
+        <!-- Dual Side-by-Side Plots (Matching User Reference) -->
+        <div class="charts-row">
+          <!-- Plot 1: RMSE by Number of Features -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h2 class="chart-title"><span>📉</span> RMSE by Number of Features</h2>
+              <span class="chart-legend-badge" id="rmse-badge">Lower is Better</span>
+            </div>
+            <div class="chart-canvas-container">
+              <canvas id="rmseChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Plot 2: R-squared by Number of Features -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <h2 class="chart-title"><span>📈</span> R-squared by Number of Features</h2>
+              <span class="chart-legend-badge" id="r2-badge">Higher is Better</span>
+            </div>
+            <div class="chart-canvas-container">
+              <canvas id="r2Chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plot 3: Actual vs Predicted Regression Plot -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h2 class="chart-title"><span>🎯</span> Actual vs. Predicted Profit (Validation Test Set)</h2>
+            <span class="chart-legend-badge" id="model-status-badge">Model: SFS (k=2)</span>
+          </div>
+          <div class="chart-canvas-container large">
+            <canvas id="scatterChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Interactive Controls Panel -->
+      <aside class="controls-panel" aria-label="Interactive Controls">
+        <!-- Algorithm Switcher Card -->
+        <div class="control-card">
+          <div class="card-title">
+            <span>⚙️</span>
+            <span>Algorithm Selection</span>
+          </div>
+          <div class="algo-tabs" role="tablist">
+            <button class="algo-tab-btn active" id="tab-sfs" onclick="switchAlgorithm('sfs')" role="tab">SFS (Forward)</button>
+            <button class="algo-tab-btn" id="tab-rfe" onclick="switchAlgorithm('rfe')" role="tab">RFE (Backward)</button>
+            <button class="algo-tab-btn" id="tab-exhaustive" onclick="switchAlgorithm('exhaustive')" role="tab">Exhaustive</button>
+          </div>
+
+          <!-- Number of Features Slider -->
+          <div class="parameter-control">
+            <div class="control-label">
+              <span>Features ($k$)</span>
+              <span class="control-value" id="k-value-display">k = 2</span>
+            </div>
+            <div class="slider-wrapper">
+              <button class="slider-btn" id="k-dec-btn" onclick="adjustK(-1)" title="Decrease k">−</button>
+              <input type="range" id="k-slider" min="1" max="5" step="1" value="2" class="slider" oninput="onKSliderChange(this.value)">
+              <button class="slider-btn" id="k-inc-btn" onclick="adjustK(1)" title="Increase k">+</button>
+            </div>
+          </div>
+
+          <!-- Active Features Badges -->
+          <div class="control-label" style="margin-top: 15px;">
+            <span>Included Features</span>
+          </div>
+          <div class="feature-tags-container" id="feature-tags-list">
+            <!-- Dynamic Chips Injected via JS -->
+          </div>
+
+          <!-- Live Equation Display -->
+          <div class="equation-display" id="equation-display">
+            Profit = 54,028 + 0.806 × R&D + 0.030 × Marketing
+          </div>
+        </div>
+
+        <!-- Performance Metrics Grid Card -->
+        <div class="control-card">
+          <div class="card-title">
+            <span>📊</span>
+            <span>Validation Metrics</span>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <div class="metric-label">RMSE</div>
+              <div class="metric-value highlight-primary" id="metric-rmse">$8,198.80</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">R-Squared ($R^2$)</div>
+              <div class="metric-value highlight-good" id="metric-r2">0.9474</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">MAE</div>
+              <div class="metric-value" id="metric-mae">$6,886.59</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">Overfitting Index</div>
+              <div class="metric-value" id="metric-overfit">Optimal</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Action Buttons Card -->
+        <div class="control-card">
+          <div class="card-title">
+            <span>🎮</span>
+            <span>Quick Actions</span>
+          </div>
+          <div class="action-buttons">
+            <button class="btn btn-primary btn-full" id="btn-optimal" onclick="selectOptimalSubset()">
+              <span>🎯</span>
+              <span>Select Optimal Subset</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-reset" onclick="resetControls()">
+              <span>🔄</span>
+              <span>Reset</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-export" onclick="exportResultsCSV()">
+              <span>📥</span>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Interactive Comparison Table Section -->
+    <section class="table-section">
+      <div class="table-header">
+        <h2 class="table-title"><span>📋</span> Feature Selection Benchmark Table: <span id="current-algo-name">Sequential Forward Selection (SFS)</span></h2>
+        <span style="font-size: 0.9rem; color: var(--text-muted);">Click any row to inspect that model</span>
+      </div>
+      <div class="table-responsive">
+        <table class="styled-table" id="comparison-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">Number of Features</th>
+              <th>Selected Features</th>
+              <th style="width: 170px;">RMSE ($)</th>
+              <th style="width: 150px;">MAE ($)</th>
+              <th style="width: 150px;">R-squared ($R^2$)</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Dynamically populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Interactive Live Prediction Calculator -->
+    <section class="calculator-section">
+      <div class="card-title" style="margin-bottom: 20px;">
+        <span>🔮</span>
+        <span>Live Startup Profit Prediction Playground</span>
+      </div>
+      <p style="color: var(--text-muted); margin-bottom: 22px; font-size: 0.95rem;">
+        Adjust the operational spending sliders below. The active feature selection model will instantly compute the predicted annual profit!
+      </p>
+
+      <div class="calc-grid">
+        <div class="calc-inputs-grid">
+          <!-- R&D Spend Slider -->
+          <div class="parameter-control">
+            <div class="control-label">
+              <span>R&D Spend ($)</span>
+              <span class="control-value" id="calc-rd-val">$100,000</span>
+            </div>
+            <input type="range" id="calc-rd-slider" min="0" max="200000" step="5000" value="100000" class="slider" oninput="updateProfitPrediction()">
+          </div>
+
+          <!-- Administration Spend Slider -->
+          <div class="parameter-control">
+            <div class="control-label">
+              <span>Administration ($)</span>
+              <span class="control-value" id="calc-admin-val">$120,000</span>
+            </div>
+            <input type="range" id="calc-admin-slider" min="0" max="200000" step="5000" value="120000" class="slider" oninput="updateProfitPrediction()">
+          </div>
+
+          <!-- Marketing Spend Slider -->
+          <div class="parameter-control">
+            <div class="control-label">
+              <span>Marketing Spend ($)</span>
+              <span class="control-value" id="calc-mkt-val">$200,000</span>
+            </div>
+            <input type="range" id="calc-mkt-slider" min="0" max="500000" step="10000" value="200000" class="slider" oninput="updateProfitPrediction()">
+          </div>
+
+          <!-- State Dropdown -->
+          <div class="parameter-control">
+            <div class="control-label">
+              <span>Location / State</span>
+            </div>
+            <select id="calc-state-select" class="slider" style="height: 38px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 10px; font-weight: 600;" onchange="updateProfitPrediction()">
+              <option value="California">California</option>
+              <option value="Florida">Florida</option>
+              <option value="New York">New York</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Live Prediction Result Card -->
+        <div class="calc-result-card">
+          <div class="calc-result-label">Predicted Annual Profit</div>
+          <div class="calc-result-number" id="calc-predicted-profit">$132,546.61</div>
+          <div class="calc-result-subtext" id="calc-formula-desc">Based on active model: ['R&D Spend', 'Marketing Spend']</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Interactive Machine Learning Studio • Kaggle 50 Startups Dataset • Built with Vanilla HTML5, CSS3 & JavaScript</p>
+    </footer>
+  </div>
+
+  <!-- Main JavaScript Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
